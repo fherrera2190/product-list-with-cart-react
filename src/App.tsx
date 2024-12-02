@@ -1,10 +1,13 @@
 import "./assets/css/style.css";
+import { CartProvider } from "./context";
 import { Home } from "./pages/Home";
 
 function App() {
   return (
     <>
-      <Home />
+      <CartProvider>
+        <Home />
+      </CartProvider>
     </>
   );
 }

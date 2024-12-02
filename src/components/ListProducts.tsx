@@ -6,8 +6,6 @@ interface Props {
 }
 
 export const ListProducts = ({ products }: Props) => {
-
-
     
 
   return (

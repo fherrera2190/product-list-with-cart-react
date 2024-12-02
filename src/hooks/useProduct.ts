@@ -1,12 +1,25 @@
 import { useState } from "react";
+import { Product, ProductInCart } from "../interfaces";
 
-export const useProduct = (value = 0) => {
+interface UseProductArgs {
+  manageProductInCart: (product: ProductInCart) => void;
+  removeFromCart: (product: Product) => void;
+  value?: number;
+  product: Product;
+}
+
+export const useProduct = ({
+  manageProductInCart,
+  product,
+  value = 0,
+}: UseProductArgs) => {
   const [counter, setCounter] = useState(value);
 
   const increaseBy = (value: number) => {
     const newValue = Math.max(0, counter + value);
     setCounter(newValue);
+    manageProductInCart({ ...product, quantity: newValue });
   };
 
-  return { counter, increaseBy };
+  return { counter, increaseBy,  };
 };

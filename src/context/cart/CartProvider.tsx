@@ -1,13 +1,10 @@
 import { useReducer } from "react";
-import { Product } from "../../interfaces";
+import { Product, ProductInCart } from "../../interfaces";
 import CartContext from "./CartContext";
 import { cartReducer } from "./cartReducer";
 
 export interface CartState {
-  [key: string]: {
-    product: Product;
-    quantity: number;
-  };
+  [key: string]: ProductInCart;
 }
 
 const INITIAL_STATE: CartState = {};
@@ -19,21 +16,17 @@ interface Props {
 export const CartProvider = ({ children }: Props) => {
   const [state, dispatch] = useReducer(cartReducer, INITIAL_STATE);
 
-  const addToCart = (product: Product) => {
-    dispatch({ type: "ADD_TO_CART", payload: product });
+  const addToCart = (productInCart: ProductInCart) => {
+    dispatch({ type: "MANAGE_PRODUCT_IN_CART", payload: productInCart });
   };
 
   const removeFromCart = (product: Product) => {
-    dispatch({ type: "REMOVE_FROM_CART", payload: product });
-  };
-
-  const discountProduct = (product: Product) => {
-    dispatch({ type: "DiSCOUNT_PRODUCT_FROM_CART", payload: product });
+    dispatch({ type: "REMOVE_FROM_CART", payload: product.id });
   };
 
   return (
     <CartContext.Provider
-      value={{ state, addToCart, removeFromCart, discountProduct }}
+      value={{ state, manageProductInCart: addToCart, removeFromCart }}
     >
       {children}
     </CartContext.Provider>

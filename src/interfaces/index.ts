@@ -13,6 +13,6 @@ export interface ProductImage {
   desktop: string;
 }
 
-export interface ProductInCart {
-  [key: string]: { quantity: number; product: Product };
+export interface ProductInCart extends Product {
+  quantity: number;
 }

@@ -18,7 +18,11 @@ export const CardHeader = ({ image }: Props) => {
           srcSet={image.tablet}
           media="(max-width: 768px) and (min-width: 376px)"
         />
-        <img src={image.mobile} alt="product image" className="card__image" />
+        <img
+          src={image.mobile}
+          alt="product image"
+          className={`card__image ${counter > 0 ? "img__select" : ""}`}
+        />
       </picture>
 
       {counter < 1 ? <ButtonAddProduct /> : <ButtonIncDecProduct />}

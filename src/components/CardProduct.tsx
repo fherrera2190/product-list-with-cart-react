@@ -13,14 +13,17 @@ interface Props {
 
 export const CardProduct = ({ product }: Props) => {
   const { image, name, category, price } = product;
+  const { state, manageProductInCart, removeFromCart } =
+    useContext(CartContext);
 
-  const { counter, increaseBy } = useProduct(0);
+  const { counter, increaseBy } = useProduct({
+    manageProductInCart,
+    removeFromCart,
+    product,
+    value: 0,
+  });
 
-  const { addToCart, discountProduct } = useContext(CartContext);
-
-  useEffect(() => {
-    addToCart(product);
-  }, [counter]);
+  useEffect(() => {}, [state]);
 
   return (
     <ProductContext.Provider value={{ counter, increaseBy }}>

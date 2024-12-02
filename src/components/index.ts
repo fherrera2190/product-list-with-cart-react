@@ -5,6 +5,8 @@ export * from './CardBody';
 export * from './CardFooter';
 export * from './CardHeader';
 export * from './CardProduct';
+export * from './CartProduct';
 export * from './CartSection';
 export * from './EmptyProduct';
+export * from './ListCartProducts';
 export * from './ListProducts';
