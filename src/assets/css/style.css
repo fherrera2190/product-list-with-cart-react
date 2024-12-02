@@ -54,6 +54,7 @@ main {
   margin: 0 auto;
   width: 90%;
 }
+
 .btn_product {
   position: absolute;
   bottom: -15px;
@@ -64,6 +65,7 @@ main {
   overflow: hidden;
   border: 1px solid var(--Rose300);
 }
+
 .btn_generic {
   width: 100%;
   text-align: center;
@@ -77,6 +79,7 @@ main {
     background-color: var(--Rose900);
   }
 }
+
 .card {
   display: flex;
   flex-direction: column;
@@ -204,6 +207,7 @@ main {
     }
   }
 }
+
 .cart-empty-product {
   max-width: 250px;
 
@@ -219,6 +223,7 @@ main {
     color: var(--Rose500);
   }
 }
+
 .product-select {
   width: 100%;
   display: flex;
