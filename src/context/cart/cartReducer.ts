@@ -1,5 +1,4 @@
-import { ProductInCart } from "../../interfaces";
-import { CartState } from "./CartProvider";
+import { CartState, ProductInCart } from "../../interfaces";
 
 type Action =
   | {

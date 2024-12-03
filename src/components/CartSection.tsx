@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import CartContext from "../context/cart/CartContext";
 import { EmptyProduct, ListCartProducts, ShowTotal } from "./";
+import { ProductInCart } from "../interfaces";
 
 interface Props {
   toggleModal: () => void;
@@ -8,7 +9,7 @@ interface Props {
 export const CartSection = ({ toggleModal }: Props) => {
   const { state, total, quantity } = useContext(CartContext);
   const keys = Object.keys(state);
-  const productsInCart = Object.values(state);
+  const productsInCart: ProductInCart[] = Object.values(state);
 
   return (
     <section className="cart-section">

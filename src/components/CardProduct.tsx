@@ -3,7 +3,7 @@ import { Product } from "../interfaces";
 import { CardBody, CardFooter, CardHeader } from "./";
 import ProductContext from "../context/product/ProductContext";
 import CartContext from "../context/cart/CartContext";
-import { useProduct } from "../hooks/useProduct";
+import { useProduct } from "../hooks";
 
 interface Props {
   product: Product;

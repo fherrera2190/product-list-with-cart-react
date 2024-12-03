@@ -1,10 +1,11 @@
 import { useContext } from "react";
 import { ListOrderProducts } from "./ListOrderProducts";
 import CartContext from "../context/cart/CartContext";
+import { ProductInCart } from "../interfaces";
 
 export const BuyModal = ({ modal }: { modal: boolean }) => {
   const { state,total } = useContext(CartContext);
-  const productsInCart = Object.values(state);
+  const productsInCart: ProductInCart[] = Object.values(state);
   return (
     <div className="modal" style={{ display: modal ? "block" : "none" }}>
       <div className="modal-content">
@@ -31,7 +32,7 @@ export const BuyModal = ({ modal }: { modal: boolean }) => {
             <ListOrderProducts productsInCart={productsInCart} />
             <p className="order-total">
               <small className="text-order-total">Order Total</small>
-              <span>${total}</span>
+              <span>${parseFloat(total + "").toFixed(2)}</span>
             </p>
           </article>
           <button

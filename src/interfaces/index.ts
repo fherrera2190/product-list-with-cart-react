@@ -16,3 +16,7 @@ export interface ProductImage {
 export interface ProductInCart extends Product {
   quantity: number;
 }
+
+export interface CartState {
+  [key: string]: ProductInCart;
+}

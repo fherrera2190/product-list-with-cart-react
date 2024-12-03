@@ -1,6 +1,5 @@
 import { createContext } from "react";
-import { Product, ProductInCart } from "../../interfaces";
-import { CartState } from "./CartProvider";
+import { CartState, Product, ProductInCart } from "../../interfaces";
 
 interface CartContextProps {
   state: CartState;
