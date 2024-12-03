@@ -19,7 +19,7 @@ export const useProduct = ({
 
   useEffect(() => {
     setCounter(state[product.id]?.quantity || 0);
-  }, [state]);
+  }, [product.id,state]);
 
   const increaseBy = (value: number) => {
     const newValue = Math.max(0, counter + value);

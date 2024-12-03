@@ -13,7 +13,7 @@ type Action =
 
 export const cartReducer = (state: CartState, action: Action): CartState => {
   switch (action.type) {
-    case "MANAGE_PRODUCT_IN_CART":
+    case "MANAGE_PRODUCT_IN_CART": {
       if (action.payload.quantity === 0) {
         const { [action.payload.id]: toDelete, ...rest } = state;
         localStorage.setItem("cart", JSON.stringify(rest));
@@ -28,6 +28,7 @@ export const cartReducer = (state: CartState, action: Action): CartState => {
       localStorage.setItem("cart", JSON.stringify(newState));
 
       return newState;
+    }
 
     case "REMOVE_FROM_CART": {
       const { [action.payload]: toDelete, ...rest } = state;
