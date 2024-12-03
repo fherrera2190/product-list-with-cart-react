@@ -9,4 +9,6 @@ export * from './CartProduct';
 export * from './CartSection';
 export * from './EmptyProduct';
 export * from './ListCartProducts';
+export * from './ListOrderProducts';
 export * from './ListProducts';
+export * from './ShowTotal';

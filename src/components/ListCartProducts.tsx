@@ -1,5 +1,5 @@
 import { ProductInCart } from "../interfaces";
-import { CartProduct } from "./CartProduct";
+import { CartProduct } from "./";
 
 interface Props {
   productsInCart: ProductInCart[];

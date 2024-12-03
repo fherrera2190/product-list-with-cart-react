@@ -3,7 +3,7 @@ import { ListOrderProducts } from "./ListOrderProducts";
 import CartContext from "../context/cart/CartContext";
 
 export const BuyModal = ({ modal }: { modal: boolean }) => {
-  const { state } = useContext(CartContext);
+  const { state,total } = useContext(CartContext);
   const productsInCart = Object.values(state);
   return (
     <div className="modal" style={{ display: modal ? "block" : "none" }}>
@@ -31,7 +31,7 @@ export const BuyModal = ({ modal }: { modal: boolean }) => {
             <ListOrderProducts productsInCart={productsInCart} />
             <p className="order-total">
               <small className="text-order-total">Order Total</small>
-              <span>$100</span>
+              <span>${total}</span>
             </p>
           </article>
           <button

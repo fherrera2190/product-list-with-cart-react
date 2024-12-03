@@ -22,7 +22,7 @@ export const ListOrderProducts = ({
             </p>
           </div>
           <p>
-            $${parseFloat(product.quantity * product.price + "").toFixed(2)}
+            ${parseFloat(product.quantity * product.price + "").toFixed(2)}
           </p>
         </div>
       ))}

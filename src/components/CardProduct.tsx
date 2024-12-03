@@ -1,10 +1,9 @@
 import { useContext } from "react";
 import { Product } from "../interfaces";
 import { CardBody, CardFooter, CardHeader } from "./";
-
-import { useProduct } from "../hooks/useProduct";
 import ProductContext from "../context/product/ProductContext";
 import CartContext from "../context/cart/CartContext";
+import { useProduct } from "../hooks/useProduct";
 
 interface Props {
   product: Product;

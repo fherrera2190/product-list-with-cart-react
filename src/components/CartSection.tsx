@@ -1,33 +1,14 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import CartContext from "../context/cart/CartContext";
-import { EmptyProduct } from "./EmptyProduct";
-import { ListCartProducts } from "./ListCartProducts";
-import { ShowTotal } from "./ShowTotal";
+import { EmptyProduct, ListCartProducts, ShowTotal } from "./";
 
 interface Props {
   toggleModal: () => void;
 }
 export const CartSection = ({ toggleModal }: Props) => {
-  const { state } = useContext(CartContext);
-  const [total, setTotal] = useState(0);
-  const [quantity, setQuantity] = useState(0);
+  const { state, total, quantity } = useContext(CartContext);
   const keys = Object.keys(state);
   const productsInCart = Object.values(state);
-
-  useEffect(() => {
-    const calculateTotal = productsInCart.reduce(
-      (acc, product) => acc + product.price * product.quantity,
-      0
-    );
-
-    const calculateQuantity = productsInCart.reduce(
-      (acc, product) => acc + product.quantity,
-      0
-    );
-
-    setTotal(calculateTotal);
-    setQuantity(calculateQuantity);
-  }, [productsInCart]);
 
   return (
     <section className="cart-section">
