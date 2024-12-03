@@ -9,14 +9,19 @@ export interface CartState {
 
 const INITIAL_STATE: CartState = {};
 
+const init = () => {
+  const cart = localStorage.getItem("cart");
+  return cart ? JSON.parse(cart) : INITIAL_STATE;
+};
+
 interface Props {
   children: React.ReactNode | React.ReactNode[];
 }
 
 export const CartProvider = ({ children }: Props) => {
-  const [state, dispatch] = useReducer(cartReducer, INITIAL_STATE);
+  const [state, dispatch] = useReducer(cartReducer, INITIAL_STATE, init);
 
-  const addToCart = (productInCart: ProductInCart) => {
+  const manageProductInCart = (productInCart: ProductInCart) => {
     dispatch({ type: "MANAGE_PRODUCT_IN_CART", payload: productInCart });
   };
 
@@ -26,7 +31,7 @@ export const CartProvider = ({ children }: Props) => {
 
   return (
     <CartContext.Provider
-      value={{ state, manageProductInCart: addToCart, removeFromCart }}
+      value={{ state, manageProductInCart, removeFromCart }}
     >
       {children}
     </CartContext.Provider>

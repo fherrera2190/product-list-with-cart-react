@@ -1,14 +1,16 @@
 import { useContext } from "react";
 import { ProductImage } from "../interfaces";
 import { ButtonAddProduct, ButtonIncDecProduct } from "./";
-import ProductContext from "../context/product/ProductContext";
+import CartContext from "../context/cart/CartContext";
 
 interface Props {
   image: ProductImage;
+  id: string;
 }
 
-export const CardHeader = ({ image }: Props) => {
-  const { counter } = useContext(ProductContext);
+export const CardHeader = ({ image, id }: Props) => {
+  const { state } = useContext(CartContext);
+  const counter = state[id]?.quantity || 0;
 
   return (
     <div className="card__header">

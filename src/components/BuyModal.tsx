@@ -1,4 +1,6 @@
 export const BuyModal = () => {
+  
+
   return (
     <div id="modal-order" className="modal">
       <div className="modal-content">

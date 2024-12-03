@@ -12,6 +12,7 @@ export const CartSection = () => {
   const productsInCart = Object.values(state);
   
   useEffect(() => {
+    
     const calculateTotal = productsInCart.reduce(
       (acc, product) => acc + product.price * product.quantity,
       0

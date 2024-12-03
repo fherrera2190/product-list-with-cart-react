@@ -16,17 +16,24 @@ export const cartReducer = (state: CartState, action: Action): CartState => {
     case "MANAGE_PRODUCT_IN_CART":
       if (action.payload.quantity === 0) {
         const { [action.payload.id]: toDelete, ...rest } = state;
+        localStorage.setItem("cart", JSON.stringify(rest));
         void toDelete;
         return rest;
       }
-      return {
+
+      const newState = {
         ...state,
         [action.payload.id]: action.payload,
       };
+      localStorage.setItem("cart", JSON.stringify(newState));
+
+      return newState;
 
     case "REMOVE_FROM_CART": {
       const { [action.payload]: toDelete, ...rest } = state;
       void toDelete;
+      localStorage.setItem("cart", JSON.stringify(rest));
+
       return rest;
     }
 

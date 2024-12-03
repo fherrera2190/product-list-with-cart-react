@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import CartContext from "../context/cart/CartContext";
 import { ProductInCart } from "../interfaces";
 
 interface Props {
@@ -5,6 +7,8 @@ interface Props {
 }
 
 export const CartProduct = ({ product }: Props) => {
+  const {removeFromCart} = useContext(CartContext);
+
   return (
     <div className="product-select">
       <div className="product-detail">
@@ -24,7 +28,7 @@ export const CartProduct = ({ product }: Props) => {
           </p>
         </div>
       </div>
-      <button className="remove-button">
+      <button className="remove-button" onClick={() => removeFromCart(product)}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="10"
