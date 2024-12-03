@@ -1,8 +1,12 @@
-export const BuyModal = () => {
-  
+import { useContext } from "react";
+import { ListOrderProducts } from "./ListOrderProducts";
+import CartContext from "../context/cart/CartContext";
 
+export const BuyModal = ({ modal }: { modal: boolean }) => {
+  const { state } = useContext(CartContext);
+  const productsInCart = Object.values(state);
   return (
-    <div id="modal-order" className="modal">
+    <div className="modal" style={{ display: modal ? "block" : "none" }}>
       <div className="modal-content">
         <svg
           width="48"
@@ -23,8 +27,22 @@ export const BuyModal = () => {
         <h2>Order Confirmed</h2>
         <section className="modal-section">
           <h6>We hope you enjoy your food!</h6>
-          <article id="order-products"></article>
-          <button className="btn_generic">Start new order</button>
+          <article>
+            <ListOrderProducts productsInCart={productsInCart} />
+            <p className="order-total">
+              <small className="text-order-total">Order Total</small>
+              <span>$100</span>
+            </p>
+          </article>
+          <button
+            className="btn_generic"
+            onClick={() => {
+              window.location.reload();
+              localStorage.removeItem("cart");
+            }}
+          >
+            Start new order
+          </button>
         </section>
       </div>
     </div>

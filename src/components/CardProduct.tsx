@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { Product } from "../interfaces";
 import { CardBody, CardFooter, CardHeader } from "./";
 
@@ -21,7 +21,6 @@ export const CardProduct = ({ product }: Props) => {
     product,
     value: state[product.id]?.quantity || 0,
   });
-
 
   return (
     <ProductContext.Provider value={{ counter, increaseBy }}>

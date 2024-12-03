@@ -29,6 +29,8 @@ export const CartProvider = ({ children }: Props) => {
     dispatch({ type: "REMOVE_FROM_CART", payload: product.id });
   };
 
+  
+
   return (
     <CartContext.Provider
       value={{ state, manageProductInCart, removeFromCart }}

@@ -1,4 +1,10 @@
-export const ShowTotal = ({ total }: { total: number }) => {
+export const ShowTotal = ({
+  total,
+  toggleModal,
+}: {
+  total: number;
+  toggleModal: () => void;
+}) => {
   return (
     <>
       <div className="cart-total">
@@ -20,7 +26,7 @@ export const ShowTotal = ({ total }: { total: number }) => {
           </small>
         </p>
       </div>
-      <button className="btn_generic" id="confirmOrder">
+      <button className="btn_generic" onClick={toggleModal}>
         Confirm Order
       </button>
     </>

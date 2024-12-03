@@ -4,15 +4,17 @@ import { EmptyProduct } from "./EmptyProduct";
 import { ListCartProducts } from "./ListCartProducts";
 import { ShowTotal } from "./ShowTotal";
 
-export const CartSection = () => {
+interface Props {
+  toggleModal: () => void;
+}
+export const CartSection = ({ toggleModal }: Props) => {
   const { state } = useContext(CartContext);
   const [total, setTotal] = useState(0);
   const [quantity, setQuantity] = useState(0);
   const keys = Object.keys(state);
   const productsInCart = Object.values(state);
-  
+
   useEffect(() => {
-    
     const calculateTotal = productsInCart.reduce(
       (acc, product) => acc + product.price * product.quantity,
       0
@@ -38,7 +40,7 @@ export const CartSection = () => {
         ) : (
           <>
             <ListCartProducts productsInCart={productsInCart} />
-            <ShowTotal total={total} />
+            <ShowTotal total={total} toggleModal={toggleModal} />
           </>
         )}
       </article>
