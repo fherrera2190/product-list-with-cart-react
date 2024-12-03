@@ -8,7 +8,7 @@ export const ListOrderProducts = ({
   return (
     <>
       {productsInCart.map((product: ProductInCart) => (
-        <div className="order-product">
+        <div key={product.id} className="order-product">
           <img src={product.image.thumbnail} alt="" />
           <div className="order-info">
             <h5>${product.name}</h5>

@@ -18,8 +18,9 @@ export const useProduct = ({
   const [counter, setCounter] = useState(value);
 
   useEffect(() => {
-    setCounter(state[product.id]?.quantity || 0);
-  }, [product.id,state]);
+    if(state[product.id]?.quantity>0) return
+    setCounter(0);
+  }, []);
 
   const increaseBy = (value: number) => {
     const newValue = Math.max(0, counter + value);
