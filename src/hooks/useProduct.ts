@@ -17,16 +17,17 @@ export const useProduct = ({
   const { state } = useContext(CartContext);
   const [counter, setCounter] = useState(value);
 
-  useEffect(() => {
-    if(state[product.id]?.quantity>0) return
-    setCounter(0);
-  }, []);
-
+  
   const increaseBy = (value: number) => {
     const newValue = Math.max(0, counter + value);
     setCounter(newValue);
     manageProductInCart({ ...product, quantity: newValue });
   };
-
+  
+  useEffect(() => {
+    if (state[product.id]?.quantity > 0) return;
+    setCounter(0);
+  }, [state[product.id]]);
+  
   return { counter, increaseBy };
 };
